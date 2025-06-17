@@ -1,21 +1,25 @@
 public class Main {
     public static void main(String[] args) {
-        String input = "10";
+        String test = "2,3";
 
-        try{
-            validateTokenCount(input);
-
-            System.out.println("숫자 2개");
-
-        } catch (NumberFormatException e){
+        try {
+            int result = multiply(test);
+            System.out.println(result);
+        } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
-        }
-
-    }
-
-    public static void validateTokenCount(String tokens){
-        if (tokens.length() != 2){
-            throw new NumberFormatException("숫자 2개가 아닙니다.");
+            System.out.println("에러!");
         }
     }
+
+    public static int multiply(String input) throws NumberFormatException {
+        String[] splitInput = input.split(",");
+        int[] results = new int[2];
+
+        for(int i = 0; i < splitInput.length; i++) {
+            results[i] = Integer.parseInt(splitInput[i]);
+        }
+
+        return results[0] * results[1];
+    }
+
 }

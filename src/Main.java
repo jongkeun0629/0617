@@ -1,15 +1,19 @@
-import java.util.Arrays;
+class Util {
+    public static void sayHello(String name) {
+        System.out.println("Hello, " + name);
+    }
+}
+
+@FunctionalInterface
+interface A {
+    public void say(String name);
+}
 
 public class Main {
     public static void main(String[] args) {
-        String[] names = {"Alice", "Bob", "Charlie"};
+//        A a = (name) -> Util.sayHello(name);
+        A a = Util::sayHello;
 
-        // 람다
-        Arrays.stream(names).forEach(name -> System.out.println(name));
-
-        System.out.println();
-
-        // 메소드 참조
-        Arrays.stream(names).forEach(System.out::println);
+        a.say("Jongkeun");
     }
 }
